@@ -40,9 +40,9 @@
       <label for="zipCode">Zip Code:</label>
       <input type="text" name="zipCode" th:value="${client.zipCode}"/>
       <br/>
-      <label for="contactIds">Contacts:</label>
-      <label th:each="contact : ${contacts}" th:text="${contact.fullName}"/>
-      
+      <label for="associates">Current Contacts:</label>
+      <p th:each="associate : ${associates}" th:text="${associate.fullName}"/>
+      <label for="contactIds">Choose Contacts:</label>
       <input type="checkbox" name="contactIds"
             th:each="contact : ${contacts}"
             th:text="${contact.fullName}"

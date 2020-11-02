@@ -97,11 +97,12 @@ public class PersonController {
     @GetMapping(value = "edit/{personId}")
     public ModelAndView edit(@PathVariable Integer personId) {
         ModelAndView mav = new ModelAndView("person/edit");
-        Person person = personService.readPerson(personId);
-        mav.addObject("person", person);
-        mav.addObject("chosenClient", clientService.readClient(person.getClientId()));
+        mav.addObject("person", personService.readPerson(personId));
+        mav.addObject("chosenClient", clientService.readClient(personService.readPerson(personId).getClientId()));
         mav.addObject("clients", clientService.listClients());
         mav.addObject("errors", new ArrayList<String>());
+        System.out.println(mav);
+        System.out.println(personService.readPerson(personId).getClientId());
         return mav;
     }
 

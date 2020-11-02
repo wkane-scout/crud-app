@@ -39,6 +39,13 @@
       <label for="zipCode">Zip Code:</label>
       <input type="text" name="zipCode" th:value="${client.zipCode}"/>
       <br/>
+      <label for="contactIds">Contacts:</label>
+      <label th:each="contact : ${contacts}" th:text="${contact.fullName}"/>
+      <input type="checkbox" name="contactIds"
+            th:each="contact : ${contacts}"
+            th:text="${contact.fullName}"
+            th:value="${contact.personId}"/>
+      <br/>
       <input type="submit" name="Submit" value="Submit"/>
     </form>
   </body>

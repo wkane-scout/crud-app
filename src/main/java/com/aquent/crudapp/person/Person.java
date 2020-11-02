@@ -3,8 +3,6 @@ package com.aquent.crudapp.person;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.aquent.crudapp.client.Client;
-
 /**
  * The person entity corresponding to the "person" table in the database.
  */

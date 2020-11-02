@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aquent.crudapp.client.JdbcClientDao;
-
 /**
  * Spring JDBC implementation of {@link PersonDao}.
  */
@@ -24,7 +22,6 @@ public class JdbcPersonDao implements PersonDao {
 
     private static final String SQL_LIST_PEOPLE = "SELECT * FROM person ORDER BY first_name, last_name, person_id";
     private static final String SQL_READ_PERSON = "SELECT * FROM person WHERE person_id = :personId";
-    private static final String SQL_READ_PEOPLE = "SELECT * FROM person WHERE person_id in :ids";
     private static final String SQL_DELETE_PERSON = "DELETE FROM person WHERE person_id = :personId";
     private static final String SQL_UPDATE_PERSON = "UPDATE person SET (first_name, last_name, email_address, street_address, city, state, zip_code, client_id)"
                                                   + " = (:firstName, :lastName, :emailAddress, :streetAddress, :city, :state, :zipCode, :clientId)"
@@ -49,11 +46,6 @@ public class JdbcPersonDao implements PersonDao {
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public Person readPerson(Integer personId) {
         return namedParameterJdbcTemplate.queryForObject(SQL_READ_PERSON, Collections.singletonMap("personId", personId), new PersonRowMapper());
-    }
-    
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public Person readPeople(List<Integer> ids) {
-        return namedParameterJdbcTemplate.queryForObject(SQL_READ_PEOPLE, Collections.singletonMap("personId", personId), new PersonRowMapper());
     }
 
     @Override

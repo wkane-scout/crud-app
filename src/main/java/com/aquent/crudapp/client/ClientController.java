@@ -88,8 +88,25 @@ public class ClientController {
     @GetMapping(value = "edit/{clientId}")
     public ModelAndView edit(@PathVariable Integer clientId) {
         ModelAndView mav = new ModelAndView("client/edit");
-        mav.addObject("client", clientService.readClient(clientId));
-        mav.addObject("contacts", personService.listPeople());
+        Client client = clientService.readClient(clientId);
+        List<Person> people = personService.listPeople();
+        mav.addObject("client", client);
+        mav.addObject("contacts", people);
+        
+        // Retrieves People that are currently in the Client and lists them to display on front end
+        List<Person> clientAssociates = new ArrayList<Person>();
+        for(int x = 0; x < people.size(); x++) {
+        	String stringAssociateIds = client.getContactIds();
+        	if(stringAssociateIds != null) {
+	        	String[] associateIds = stringAssociateIds.split(",");
+	        	for(int y = 0; y < associateIds.length; y++) {
+	        		if(people.get(x).getPersonId() == Integer.parseInt(associateIds[y])) {
+	        			clientAssociates.add(people.get(x));
+	        		}
+	        	}
+        	}
+        }
+        mav.addObject("associates", clientAssociates);
         mav.addObject("errors", new ArrayList<String>());
         return mav;
     }

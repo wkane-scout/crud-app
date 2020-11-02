@@ -36,16 +36,6 @@ public class DefaultPersonService implements PersonService {
     public Person readPerson(Integer id) {
         return personDao.readPerson(id);
     }
-    
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-    public List<Person> readPeople(List<Integer> ids) {
-    	List<Person> output = new ArrayList();
-    	for (int i = 0; i < ids.size(); i++) {
-    		Person person = personDao.readPerson(ids.get(i));
-    		output.add(person);
-    	}
-    	return output;
-    }
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = false)

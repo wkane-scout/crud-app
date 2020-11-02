@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
  * Operations on the "client" table.
  */
 @Repository
-
 public interface ClientDao {
 
 	/**

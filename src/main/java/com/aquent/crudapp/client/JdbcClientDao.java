@@ -87,19 +87,6 @@ public class JdbcClientDao implements ClientDao {
             client.setState(rs.getString("state"));
             client.setZipCode(rs.getString("zip_code"));
             client.setContactIds(rs.getString("contact_ids"));
-            System.out.println(rs.getString("contact_ids"));
-            /*
-            ArrayList<Integer> contactIds = new ArrayList<Integer>();
-            String combined = rs.getString("contact_ids");
-            System.out.println("Combined " + combined);
-            String[] combinedSplit = combined.split(",");
-            System.out.println(combinedSplit);
-            for (int i = 0; i < combinedSplit.length; i++) {
-            	contactIds.add(Integer.valueOf(combinedSplit[i]));
-            }
-            */
-            
-            //client.setContactIds(rs.getString("contact_ids"));
             return client;
         }
     }
