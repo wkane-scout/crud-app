@@ -1,5 +1,6 @@
 package com.aquent.crudapp.person;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -23,6 +24,7 @@ public class Person {
     private String fullName;
 
     @NotNull
+    @Email
     @Size(min = 1, max = 50, message = "Email address is required with maximum length of 50")
     private String emailAddress;
 
