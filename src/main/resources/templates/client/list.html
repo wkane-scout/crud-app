@@ -5,8 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Client Listing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Create Person</title>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body>
+  <div class="container">
     <h1>Client Listing</h1>
     <p><a href="/client/create">Create New Client</a></p>
     <th:block th:unless="${#lists.isEmpty(clients)}">
@@ -22,10 +33,10 @@
         <tbody>
           <th:block th:each="client : ${clients}">
             <tr>
-              <td th:text="${client.name}">Company Name</td>
-              <td th:text="${client.url}">aquent.com</td>
-              <td th:text="${client.phone}">555-555-5555</td>
-              <td>
+              <td style="width: 20%" th:text="${client.name}">Company Name</td>
+              <td style="width: 20%" th:text="${client.url}">aquent.com</td>
+              <td style="width: 20%" th:text="${client.phone}">555-555-5555</td>
+              <td style="width: 20%">
                 <a th:href="'/client/edit/' + ${client.clientId}">Edit Client</a>
                 <a th:href="'/client/delete/' + ${client.clientId}">Delete Client</a>
               </td>
@@ -37,5 +48,6 @@
     <th:block th:if="${#lists.isEmpty(clients)}">
       <p>No results found.</p>
     </th:block>
+  </div>
   </body>
 </html>

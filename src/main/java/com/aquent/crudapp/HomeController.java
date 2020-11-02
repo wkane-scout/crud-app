@@ -17,6 +17,6 @@ public class HomeController {
      */
     @GetMapping("/")
     public String index() {
-        return "redirect:/client/list";
+        return "redirect:/person/list";
     }
 }

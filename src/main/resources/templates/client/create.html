@@ -5,8 +5,19 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Create Person</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Create Person</title>
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body>
+  <div class="container">
     <h1>Create Client</h1>
     <th:block th:unless="${#lists.isEmpty(errors)}">
       <p>Please correct the following errors in your submission:</p>
@@ -40,13 +51,13 @@
       <input type="text" name="zipCode" th:value="${client.zipCode}"/>
       <br/>
       <label for="contactIds">Contacts:</label>
-      <label th:each="contact : ${contacts}" th:text="${contact.fullName}"/>
-      <input type="checkbox" name="contactIds"
+      <input style="width: 5%" type="checkbox" name="contactIds"
             th:each="contact : ${contacts}"
             th:text="${contact.fullName}"
             th:value="${contact.personId}"/>
       <br/>
       <input type="submit" name="Submit" value="Submit"/>
     </form>
+  </div>
   </body>
 </html>

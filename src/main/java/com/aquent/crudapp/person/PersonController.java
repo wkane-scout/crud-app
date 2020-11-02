@@ -40,15 +40,6 @@ public class PersonController {
     public ModelAndView list() {
         ModelAndView mav = new ModelAndView("person/list");
         mav.addObject("persons", personService.listPeople());
-        /*
-        List<Client> clients = new ArrayList<Client>();
-        for(int i = 0; i < personService.listPeople().size(); i++)  {
-        	Person person = personService.listPeople().get(i);
-        	Client client = clientService.readClient(person.getClientId());
-        	clients.add(client);
-        }
-        mav.addObject("clients", clients);
-        */
         return mav;
     }
 
@@ -128,7 +119,7 @@ public class PersonController {
         }
     }
 
-    /** DON'T NEED TO CHANGE
+    /**
      * 
      * 
      * Renders the deletion confirmation page.
@@ -143,7 +134,7 @@ public class PersonController {
         return mav;
     }
 
-    /** DON'T NEED TO CHANGE
+    /** 
      * 
      * 
      * Handles person deletion or cancellation, redirecting to the listing page in either case.
